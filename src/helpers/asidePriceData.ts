@@ -1,0 +1,1 @@
+export const asidePriceData = [ "Below $10.00", "Below $100.00", "Below $200.00", "Above $300.00" ]
