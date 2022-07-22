@@ -1,0 +1,129 @@
+.slider-container {
+    margin: 20px;
+    padding: 10px;
+    overflow-x: hidden;
+    height: auto;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+}
+
+.home-container {
+    object-fit: contain;
+}
+
+.slider-img {
+    width: 200px;
+    height: 180px;
+    object-fit: contain;
+}
+
+.new-items {
+    position: absolute;
+    top: 0%;
+    background-color: rgba(255, 0, 0, 0.75);
+    padding: .1rem .5rem;
+    color: #fff;
+    font-weight: 700;
+    border-radius: .5rem;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+    max-width: 70rem;
+    min-height: 15rem;
+    margin: 5rem auto;
+    border-radius: 10px;
+}
+
+.left-hero-section {
+    width: 100%;
+}
+
+.hero-txt {
+    font-size: 4em;
+    font-weight: 900;
+}
+
+.right-hero-section {
+    width: 100%;
+}
+
+.hero-img {
+    width: 300px;
+    transform: rotate(20deg);
+    margin-top: 50px;
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
+    border-radius: .8rem;
+}
+
+.store-btn {
+    border: none;
+    padding: .5rem 1.5rem;
+    font-size: 1.5em;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: #fd7e8b;
+    color: #fff;
+}
+
+.data-section {
+    margin-top: 10rem;
+    padding: 3rem;
+    min-height: 80vh;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 27rem);
+    gap: 1.5rem;
+    background: #141E30;  
+    background: -webkit-linear-gradient(to right, #243B55, #141E30);  
+    background: linear-gradient(to right, #243B55, #141E30);    
+}
+
+.data-card {
+    padding: 1rem;
+    width: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.data-card img {
+    width: 15rem;
+}
+
+.sub-data-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 1000px) {
+    .hero-section, .left-hero-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 510px) {
+    .hero-txt {
+        font-size: 2em;
+        font-weight: 900;
+    }
+    .hero-img {
+        width: 200px;
+    }
+}
