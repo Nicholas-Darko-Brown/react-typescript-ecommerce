@@ -10,9 +10,9 @@ import "../styles/Store.css"
 const Store = () => {
   const [checked, setChecked] = useState(false);
   const { data, error } = useShoppingCart()
-
   if (error) return <div>An error has occurred.</div>;
   if (!data) return <div>Loading...</div>
+  
 
   return (
     <div className='shopContainer'>
