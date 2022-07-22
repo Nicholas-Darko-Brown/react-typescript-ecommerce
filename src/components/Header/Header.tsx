@@ -6,9 +6,10 @@ import { NavLink } from 'react-router-dom';
 import { BsCart } from 'react-icons/bs'
 import "../../styles/Header.css"
 import { useShoppingCart } from '../../context/ShoppingCartContext';
+import { formatCurrency } from '../../utilities/formatCurrency';
 
 const Header = () => {
-  const { openCart, cartQuantity } = useShoppingCart()
+  const { openCart, cartQuantity, cartItems } = useShoppingCart()
 
   return (
     <Navbar fixed='top' collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -20,13 +21,19 @@ const Header = () => {
             <Nav.Link to="/store" as={NavLink} >Store</Nav.Link>
             <Nav.Link to="/contact" as={NavLink}>Contact us</Nav.Link>
           </Nav>
-          {cartQuantity > 0 && (
+         
           <Nav className='cart' onClick={openCart}>
-            <div className='cartTotal'>$239.00</div>
+            <div className='cartTotal'>
+            {formatCurrency(
+                    cartItems.reduce((total, curr) => {
+                        return total + curr.price * curr.quantity
+                    }, 0)
+                    )}
+            </div>
             <div className='cartIcon'><BsCart /></div> 
             <div className='cartCounter'> {cartQuantity} </div>
           </Nav>
-          )}
+          
         </Navbar.Collapse>
       </Container>
     </Navbar>
