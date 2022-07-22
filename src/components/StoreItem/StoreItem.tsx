@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card } from 'react-bootstrap'
+import { BsTrash } from 'react-icons/bs'
 import { useShoppingCart } from '../../context/ShoppingCartContext'
 import { formatCurrency } from '../../utilities/formatCurrency'
 
@@ -22,21 +23,23 @@ const StoreItem = ({ id, title, price, category, image, rating: { rate, count } 
   const quantity = getItemQuantity(id)
 
   return (
-    <Card className='h-100'>
-        <Card.Title className='mb-4'> {title} </Card.Title>
-        <Card.Img variant='top' height="250px" src={image}  style={{ objectFit: "cover"}} />
+    <Card className='h-100 p-3'>
+        <Card.Title className='mb-4 text-center'> {title} </Card.Title>
+        <Card.Img variant='top' height="250px" src={image}  style={{ objectFit: "contain"}} />
         <Card.Body className='d-flex flex-column'>
             <Card.Title className="d-flex justify-content-between align-items-baseline mb-4">
                 <span className="">{category}</span>
-                <span className="">{rate}</span>
-                <span className="">{count}</span>
                 <span className="ms-2 text-muted">{formatCurrency(price)}</span>
             </Card.Title>
+            <Card.Text className="d-flex justify-content-between align-items-baseline">
+                <span className="">Ratings: {rate}</span>
+                <span className="">Count: {count}</span>
+            </Card.Text>
         </Card.Body>
 
         <div className='mt-auto'>
             {quantity === 0 ? (
-                <Button className='w-100' onClick={() => increaseCartQuantity(id, image, price, category)}>+ Add to cart</Button>
+                <Button className='w-100' variant='secondary' onClick={() => increaseCartQuantity(id, image, price, category)}>+ Add to cart</Button>
             ): (
                 <div
                 className="d-flex align-items-center flex-column"
@@ -57,7 +60,7 @@ const StoreItem = ({ id, title, price, category, image, rating: { rate, count } 
                   size="sm"
                   onClick={() => removeFromCart(id)}
                 >
-                  Remove
+                  <BsTrash />
                 </Button>
               </div>
             )}

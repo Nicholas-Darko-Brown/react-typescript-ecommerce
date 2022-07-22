@@ -1,6 +1,7 @@
 import React, { useContext, createContext, ReactNode, useState } from "react";
 import ShoppingCart from "../components/ShoppingCart/ShoppingCart";
 import useSWR from "swr";
+import { useLocalStorage } from "../utilities/useLocalStorage";
 
 type ShoppingCartProviderProps = {
   children: ReactNode;
@@ -38,12 +39,12 @@ export const ShoppingCartProvider = ({
   children,
 }: ShoppingCartProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
 
   const { data, error } = useSWR("https://fakestoreapi.com/products", fetcher);
 
-  console.log(data);
-  console.log(cartItems);
+  console.log("context", data);
+  
 
   const cartQuantity = cartItems.reduce(
     (quantity, item) => item.quantity + quantity,
