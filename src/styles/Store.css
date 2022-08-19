@@ -3,7 +3,7 @@
     gap: 1rem;
     overflow-y: hidden;
     overflow-x: hidden;
-    height: 92vh;
+    /* height: 92vh; */
     padding-top: 25px;
     padding-right: 20px;
 }
@@ -38,7 +38,9 @@
 .catalog {
     flex: 4;
     padding: 1rem;
-    margin: 0 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 4rem;
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.1);
     height: 92vh;
     overflow-x: hidden;

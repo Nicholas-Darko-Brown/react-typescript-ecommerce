@@ -42,8 +42,6 @@ export const ShoppingCartProvider = ({
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
 
   const { data, error } = useSWR("https://fakestoreapi.com/products", fetcher);
-
-  console.log("context", data);
   
 
   const cartQuantity = cartItems.reduce(
