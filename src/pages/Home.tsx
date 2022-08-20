@@ -75,9 +75,9 @@ const Home = () => {
     </div>
 
     <div className="data-section">
-      {data1.slice(10, 19).map((item: JSX.IntrinsicAttributes & { id: number; title: string; price: number; category: string; description: string; image: string; rating: { rate: number; count: number } }) => (
-        <div className="data-card" key={item.id}>
-          <img src={item.image} alt="" />
+      {data1.slice(10, 19).map((item: JSX.IntrinsicAttributes &  { _id: string; title: string; price: number; category: string; description: string; image: {url: string}; rating: { rate: number; count: number } }) => (
+        <div className="data-card" key={item._id}>
+          <img src={item.image.url} alt="" />
           <h4> {item.title} </h4>
           <div className="sub-data-section">
             <span>Count: {item.rating.count} </span>

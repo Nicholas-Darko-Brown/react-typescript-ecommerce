@@ -10,10 +10,10 @@ type ShoppingCartProviderProps = {
 type ShoppingCartContextProps = {
   openCart: () => void;
   closeCart: () => void;
-  getItemQuantity: (id: number) => number;
-  increaseCartQuantity: (id: number,  image: string,price: number,title: string) => void;
-  decreaseCartQuantity: (id: number) => void;
-  removeFromCart: (id: number) => void;
+  getItemQuantity: (id: string) => number;
+  increaseCartQuantity: (id: string,  image: string,price: number,title: string) => void;
+  decreaseCartQuantity: (id: string) => void;
+  removeFromCart: (id: string) => void;
   cartQuantity: number;
   cartItems: CartItem[];
   data: [];
@@ -21,7 +21,7 @@ type ShoppingCartContextProps = {
 };
 
 type CartItem = {
-  id: number;
+  _id: string;
   quantity: number;
   image: string;
   price: number;
@@ -40,8 +40,10 @@ export const ShoppingCartProvider = ({
 }: ShoppingCartProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
+  const URL = process.env.BACKEND_URL || "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
+  const { data, error } = useSWR(`${URL}api/products`, fetcher);
 
-  const { data, error } = useSWR("https://fakestoreapi.com/products", fetcher);
+  // const { data, error } = useSWR("https://fakestoreapi.com/products", fetcher);
   
 
   const cartQuantity = cartItems.reduce(
@@ -53,22 +55,22 @@ export const ShoppingCartProvider = ({
 
   const closeCart = () => setIsOpen(false);
 
-  const getItemQuantity = (id: number) => {
-    return cartItems.find((item) => item.id === id)?.quantity || 0;
+  const getItemQuantity = (id: string) => {
+    return cartItems.find((item) => item._id === id)?.quantity || 0;
   };
 
   const increaseCartQuantity = (
-    id: number,
+    _id: string,
     image: string,
     price: number,
     category: string
   ) => {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id) == null) {
-        return [...currItems, { id, quantity: 1, image, price, category}];
+      if (currItems.find((item) => item._id === _id) == null) {
+        return [...currItems, { _id, quantity: 1, image, price, category}];
       } else {
         return currItems.map((item) => {
-          if (item.id === id) {
+          if (item._id === _id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;
@@ -78,13 +80,13 @@ export const ShoppingCartProvider = ({
     });
   };
 
-  const decreaseCartQuantity = (id: number) => {
+  const decreaseCartQuantity = (id: string) => {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item.id === id)?.quantity === 1) {
-        return currItems.filter((item) => item.id !== id);
+      if (currItems.find((item) => item._id === id)?.quantity === 1) {
+        return currItems.filter((item) => item._id !== id);
       } else {
         return currItems.map((item) => {
-          if (item.id === id) {
+          if (item._id === id) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
             return item;
@@ -94,9 +96,9 @@ export const ShoppingCartProvider = ({
     });
   };
 
-  const removeFromCart = (id: number) => {
+  const removeFromCart = (id: string) => {
     setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
+      return currItems.filter((item) => item._id !== id);
     });
   };
 
