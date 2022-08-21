@@ -23,9 +23,7 @@ type StoreItemProps = {
 
 const StoreItem = ({ _id, title, price, category, image: {url}, rating: { rate, count } }: StoreItemProps) => {
   const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart()
-  
   const quantity = getItemQuantity(_id)
-
   return (
     <Card className='h-100 p-3'>
         <Card.Title className='mb-4 text-center'> {title} </Card.Title>
