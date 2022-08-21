@@ -17,8 +17,8 @@ const Contact = () => {
           <textarea {...register("address")} placeholder="Message..." />
           <input className='submit-btn' type="submit" value="Send Message" />
         </form>
-
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126804.78720049757!2d-1.6861460632728391!3d6.690251044396785!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdb93e59a4e4c49%3A0x829c711d7b65e682!2sKumasi!5e0!3m2!1sen!2sgh!4v1658850086144!5m2!1sen!2sgh" style={{width: "100%", height: "70vh"}} className="map" loading="lazy" title="myFrame"></iframe>
+        {/* <div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=koforidua&amp;t=p&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://embedmapgenerator.com/">embed google maps in website</a></div><style>.mapouter{position:relative;text-align:right;width:600px;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:600px;height:400px;}.gmap_iframe {width:600px!important;height:400px!important;}</style></div> */}
+        <iframe src="https://maps.google.com/maps?hl=en&amp;q=koforidua&amp;t=p&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed" style={{width: "100%", height: "70vh"}} className="map" loading="lazy" title="myFrame"></iframe>
 
     </section>
   )

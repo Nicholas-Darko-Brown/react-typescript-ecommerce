@@ -5,6 +5,7 @@ import "../styles/Home.css"
 import HeroImg from "../assets/hero.jpg"
 import { BsCart } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import Ratings from "../components/ratings/Ratings";
 
 
 const Home = () => {
@@ -55,9 +56,9 @@ const Home = () => {
     <div >
     <Slider {...settings} className="slider-container">
 
-      {data1.slice(0, 10).map((item: JSX.IntrinsicAttributes & { id: number; title: string; price: number; category: string; description: string; image: string; rating: { rate: number; count: number } }) => (
-          <div key={item.id}>
-          <img className="slider-img" src={item.image} alt=""/>
+      {data1.slice(0, 10).map((item: JSX.IntrinsicAttributes & { _id: string; title: string; price: number; category: string; description: string; image: {url: string}; rating: { rate: number; count: number } }) => (
+          <div key={item._id}>
+          <img className="slider-img" src={item.image.url} alt=""/>
           <div className="new-items">New</div>
           </div>
         ))}
@@ -81,7 +82,7 @@ const Home = () => {
           <h4> {item.title} </h4>
           <div className="sub-data-section">
             <span>Count: {item.rating.count} </span>
-            <span>Rating: {item.rating.rate} / 5 </span>
+            <span>Rating: <Ratings rate={item.rating.rate}/> </span>
           </div>
         </div>
       ))}

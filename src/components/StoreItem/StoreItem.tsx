@@ -3,6 +3,8 @@ import { Button, Card } from 'react-bootstrap'
 import { BsTrash } from 'react-icons/bs'
 import { useShoppingCart } from '../../context/ShoppingCartContext'
 import { formatCurrency } from '../../utilities/formatCurrency'
+import Ratings from '../ratings/Ratings'
+import ratings from '../ratings/Ratings'
 
 type StoreItemProps = {
   _id: string
@@ -34,7 +36,7 @@ const StoreItem = ({ _id, title, price, category, image: {url}, rating: { rate, 
                 <span className="ms-2 text-muted">{formatCurrency(price)}</span>
             </Card.Title>
             <Card.Text className="d-flex justify-content-between align-items-baseline">
-                <span className="">Ratings: {rate}</span>
+                <span className="">Ratings: <Ratings rate={rate}/> </span>
                 <span className="">Count: {count}</span>
             </Card.Text>
         </Card.Body>

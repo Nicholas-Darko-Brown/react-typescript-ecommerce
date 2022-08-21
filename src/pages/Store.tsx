@@ -16,7 +16,7 @@ const Store = () => {
 
   return (
     <div className='shopContainer'>
-      {/* <div className="aside">
+      <div className="aside">
         <div className="priceContainer">
           <h4>Price</h4>
 
@@ -54,7 +54,7 @@ const Store = () => {
           ))}
         </div>
 
-      </div> */}
+      </div>
 
       <Row md={2} xs={1} lg={3} className="g-3 catalog">
         {data.map((item: JSX.IntrinsicAttributes & { _id: string; title: string; price: number; category: string; description: string; image:{ url: string}; rating: { rate: number; count: number } }) => (
