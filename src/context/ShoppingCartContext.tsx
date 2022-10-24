@@ -40,9 +40,10 @@ export const ShoppingCartProvider = ({
 }: ShoppingCartProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
-  const URL = process.env.BACKEND_URL || "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
+  const URL = process.env.BACKEND_URL || "http://localhost:5000/";// "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
   const { data, error } = useSWR(`${URL}api/products`, fetcher);
 
+   
   // const { data, error } = useSWR("https://fakestoreapi.com/products", fetcher);
   
 
