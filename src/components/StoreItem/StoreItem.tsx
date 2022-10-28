@@ -2,11 +2,12 @@ import React from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { BsTrash } from 'react-icons/bs'
 import { useShoppingCart } from '../../context/ShoppingCartContext'
+import { StoreProduct } from '../../types/models'
 import { formatCurrency } from '../../utilities/formatCurrency'
 import Ratings from '../ratings/Ratings'
 import ratings from '../ratings/Ratings'
 
-type StoreItemProps = {
+export type StoreItemProps = {
   _id: string
   title: string
   price: number
@@ -21,7 +22,7 @@ type StoreItemProps = {
   }   
 }
 
-const StoreItem = ({ _id, title, price, category, image: {url}, rating: { rate, count } }: StoreItemProps) => {
+const StoreItem = ({ _id, title, price, category, image: {url}, rating: { rate, count } }: StoreProduct) => {
   const { getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart } = useShoppingCart()
   const quantity = getItemQuantity(_id)
   return (

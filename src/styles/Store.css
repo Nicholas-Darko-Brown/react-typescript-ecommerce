@@ -8,7 +8,7 @@
     padding-right: 20px;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 15px;
 }
 
@@ -22,7 +22,7 @@
     background: rgb(216, 216, 216);
     border-radius: 100vw;
     border: .15em solid gray;
-}
+} */
 
 .aside {
     flex: 1;

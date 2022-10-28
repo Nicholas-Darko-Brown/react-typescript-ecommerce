@@ -38,15 +38,6 @@
     font-weight: 700;
 }
 
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    border: 1px solid red;
-    font-size: large;
-    padding: 0.25rem;
-}
-
 .show-password {
     font-style: italic;
     line-height: 2;

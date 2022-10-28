@@ -155,3 +155,16 @@
         width: 100%;
     }
 }
+
+/* new stuffs */
+.div-one {
+    margin-top: -170px; 
+    background: hsla(0, 0%, 100%, 0.7); 
+    backdrop-filter: blur(30px);
+}
+
+.div-two {
+    background-position: 50%; 
+    background-image: url('https://mdbootstrap.com/img/new/textures/full/142.jpg'); 
+    height: 500px;
+}

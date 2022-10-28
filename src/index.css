@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -9,5 +13,9 @@
 
 body {
   font-family: 'Lato', sans-serif;
-  padding-top: 60px;
+  /* padding-top: 60px; */
+}
+
+a {
+  text-decoration: none;
 }

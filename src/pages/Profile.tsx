@@ -1,24 +1,21 @@
 import React from 'react';
 import "../styles/Profile.css"
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { api } from '../services/api';
 
 const Profile = () => {
   let navigate = useNavigate()
-  const URL = process.env.BACKEND_URL || "http://localhost:5000/" // "https://witfitminds.herokuapp.com/api/create-accounts"
   const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data: any) => {
-    axios.post(`${URL}api/create-accounts`, data).then(res => {
+    api().post(`create-accounts`, data).then(res => {
       if (res.data.status) {
         navigate('/store')
       } else {
         console.log(res);
-
       }
     }).catch(error => {
       console.log('error', error);
-
     })
   };
 

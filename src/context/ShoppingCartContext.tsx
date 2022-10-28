@@ -18,6 +18,7 @@ type ShoppingCartContextProps = {
   cartItems: CartItem[];
   data: [];
   error: string;
+  clearCart: () => void
 };
 
 type CartItem = {
@@ -40,7 +41,7 @@ export const ShoppingCartProvider = ({
 }: ShoppingCartProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
-  const URL = process.env.BACKEND_URL || "http://localhost:5000/";// "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
+  const URL = "https://witfitminds.herokuapp.com/" //"http://localhost:5000/";// "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
   const { data, error } = useSWR(`${URL}api/products`, fetcher);
 
    
@@ -103,6 +104,10 @@ export const ShoppingCartProvider = ({
     });
   };
 
+  const clearCart = () => {
+    setCartItems([])
+  }
+
   return (
     <ShoppingCartContext.Provider
       value={{
@@ -116,6 +121,7 @@ export const ShoppingCartProvider = ({
         closeCart,
         data,
         error,
+        clearCart
       }}
     >
       {children}
