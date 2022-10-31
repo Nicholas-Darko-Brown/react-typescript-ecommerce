@@ -1,8 +1,6 @@
 import "../../styles/Footer.css"
-import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
-  const navigate = useNavigate()
 
   return (
     <footer className="text-gray-600 body-font border-t mt-5 bg-gray-200">
