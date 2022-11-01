@@ -4,9 +4,9 @@ const Checkout = () => {
   return (
 
     <section>
-      <div className="relative mx-auto max-w-screen-2xl">
+      <div className="relative mx-auto max-w-screen-2xl mt-10 px-5">
         <div className="grid grid-cols-1 md:grid-cols-2">
-          <div className="bg-gray-50 py-2 md:py-8">
+          <div className="bg-gray-50 border py-2 md:py-8">
             <div className="mx-auto max-w-lg px-4 lg:px-8">
               <div className="">
                 <p className="text-2xl font-medium tracking-tight">$99.99</p>
@@ -82,7 +82,7 @@ const Checkout = () => {
             </div>
           </div>
 
-          <div className="bg-white py-0 md:py-8">
+          <div className="bg-white border py-2 md:py-8">
             <div className="mx-auto max-w-lg px-4 lg:px-8">
               <form className="grid grid-cols-6 gap-4">
                 <div className="col-span-3">

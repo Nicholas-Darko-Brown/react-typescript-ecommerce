@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import { ShoppingCartProvider } from './context/ShoppingCartContext';
+import About from './pages/About';
 import Checkout from './pages/Checkout';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
@@ -16,6 +17,7 @@ const App = () => {
       <Router>
         <Header />
           <Routes>
+            <Route path='/about' element={<About />}></Route>
             <Route path='/checkout' element={<Checkout />}></Route>
             <Route path='product/details/:id' element={<StoreDetails />}></Route>
             <Route path='/store/product/details/:id' element={<StoreDetails />}></Route>

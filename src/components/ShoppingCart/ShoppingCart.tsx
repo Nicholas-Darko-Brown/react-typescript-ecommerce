@@ -11,12 +11,8 @@ type ShoppingCartProps = {
 }
 
 const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
-    const [modalShow, setModalShow] = useState(false);
     const { closeCart, cartItems, clearCart } = useShoppingCart()
 
-    const hideModal = () => {
-        setModalShow(false)
-    }
 
     return (
         <Offcanvas show={isOpen} onHide={closeCart} placement="end">
@@ -43,14 +39,12 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
                         )}
                     </div>
 
-                    <button onClick={() => setModalShow(true)} className='bg-emerald-600 text-white py-3 rounded hover:bg-emerald-700'>
-                        <a href='/checkout'>
+                    <a href='/checkout' className='w-full text-center mt-10'>
+                        <button className='bg-emerald-600 text-white py-2 px-4 rounded hover:bg-emerald-700'>
                             Proceed to Checkout
-                        </a>
-                    </button>
+                        </button>
+                    </a>
                 </Stack>
-
-                <CheckoutModal show={modalShow} onHide={hideModal} />
 
             </Offcanvas.Body>
         </Offcanvas>
