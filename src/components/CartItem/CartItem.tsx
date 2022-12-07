@@ -4,14 +4,14 @@ import { useShoppingCart } from '../../context/ShoppingCartContext'
 import { formatCurrency } from '../../utilities/formatCurrency'
 
 type CartItemProps = {
-  _id: string
+  id: string
   quantity: number
   image: string
   price: number
   category: string
 }
 
-const CartItem = ({ _id, quantity, image, price, category }: CartItemProps) => { 
+const CartItem = ({ id, quantity, image, price, category }: CartItemProps) => { 
   const { removeFromCart } = useShoppingCart()
 
   return (
@@ -36,7 +36,7 @@ const CartItem = ({ _id, quantity, image, price, category }: CartItemProps) => {
       <Button
         variant="outline-danger"
         size="sm"
-        onClick={() => removeFromCart(_id)}
+        onClick={() => removeFromCart(id)}
       >
         &times;
       </Button>

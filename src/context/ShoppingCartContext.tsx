@@ -22,7 +22,7 @@ type ShoppingCartContextProps = {
 };
 
 type CartItem = {
-  _id: string;
+  id: string;
   quantity: number;
   image: string;
   price: number;
@@ -41,8 +41,8 @@ export const ShoppingCartProvider = ({
 }: ShoppingCartProviderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [cartItems, setCartItems] = useLocalStorage<CartItem[]>("shopping-cart", []);
-  const URL = "https://witfitminds.herokuapp.com/" //"http://localhost:5000/";// "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
-  const { data, error } = useSWR(`${URL}api/products`, fetcher);
+  const URL = "https://fakestoreapi.com" //"http://localhost:5000/";// "https://witfitminds.herokuapp.com/" // "http://localhost:5000/"; //
+  const { data, error } = useSWR(`${URL}/products`, fetcher);
 
    
   // const { data, error } = useSWR("https://fakestoreapi.com/products", fetcher);
@@ -58,21 +58,21 @@ export const ShoppingCartProvider = ({
   const closeCart = () => setIsOpen(false);
 
   const getItemQuantity = (id: string) => {
-    return cartItems.find((item) => item._id === id)?.quantity || 0;
+    return cartItems.find((item) => item.id === id)?.quantity || 0;
   };
 
   const increaseCartQuantity = (
-    _id: string,
+    id: string,
     image: string,
     price: number,
     category: string
   ) => {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item._id === _id) == null) {
-        return [...currItems, { _id, quantity: 1, image, price, category}];
+      if (currItems.find((item) => item.id === id) == null) {
+        return [...currItems, { id, quantity: 1, image, price, category}];
       } else {
         return currItems.map((item) => {
-          if (item._id === _id) {
+          if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 };
           } else {
             return item;
@@ -84,11 +84,11 @@ export const ShoppingCartProvider = ({
 
   const decreaseCartQuantity = (id: string) => {
     setCartItems((currItems) => {
-      if (currItems.find((item) => item._id === id)?.quantity === 1) {
-        return currItems.filter((item) => item._id !== id);
+      if (currItems.find((item) => item.id === id)?.quantity === 1) {
+        return currItems.filter((item) => item.id !== id);
       } else {
         return currItems.map((item) => {
-          if (item._id === id) {
+          if (item.id === id) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
             return item;
@@ -100,7 +100,7 @@ export const ShoppingCartProvider = ({
 
   const removeFromCart = (id: string) => {
     setCartItems((currItems) => {
-      return currItems.filter((item) => item._id !== id);
+      return currItems.filter((item) => item.id !== id);
     });
   };
 

@@ -22,7 +22,7 @@ const StoreDetails = () => {
   useEffect(() => {
     setLoading(true);
     api()
-      .get(`product/details/${params.id}`)
+      .get(`products/${params.id}`)
       .then((response) => {
         setDetails(response.data);
         setLoading(false);
@@ -43,7 +43,7 @@ const StoreDetails = () => {
         <section className="text-gray-700 body-font overflow-hidden bg-white">
           <div className="container px-5 py-24 mx-auto">
             <div className="lg:w-4/5 mx-auto flex flex-wrap">
-              <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded p-2 border border-gray-200 shadow-sm" src={details?.productDetails.image.url} />
+              <img alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded p-2 border border-gray-200 shadow-sm" src={details?.productDetails.image} />
               <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                 {/* <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2> */}
                 <h1 className="text-gray-900 text-3xl title-font font-medium mb-1 uppercase"> {details?.productDetails.title} </h1>
@@ -116,7 +116,7 @@ const StoreDetails = () => {
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-gray-900">GHS <span className='font-bold text-3xl'>{details?.productDetails.price}</span> </span>
                   <button onClick={() => {
-                    increaseCartQuantity(details?.productDetails._id as string, details?.productDetails.image.url as string, details?.productDetails.price as number, details?.productDetails.title as string)
+                    increaseCartQuantity(details?.productDetails.id as string, details?.productDetails.image as string, details?.productDetails.price as number, details?.productDetails.title as string)
                     notify()
                   }} className="flex ml-auto items-center gap-2 text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded"> <BiCart /> Buy</button>
                   {color ?

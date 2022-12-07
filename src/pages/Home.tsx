@@ -92,8 +92,8 @@ const Home = () => {
 
       <div className="data-section">
         {products.map((item: StoreProduct) => (
-          <div onClick={() => navigate(`product/details/${item._id}`)} className="data-card cursor-pointer" key={item._id}>
-            <img src={item.image.url} alt="" />
+          <div onClick={() => navigate(`products/${item.id}`)} className="data-card cursor-pointer" key={item.id}>
+            <img src={item.image} alt="" />
             <h4> {item.title} </h4>
             <div className="sub-data-section">
               <span>Count: {item.rating.count} </span>

@@ -27,7 +27,7 @@ const ShoppingCart = ({ isOpen }: ShoppingCartProps) => {
             <Stack gap={3}>
 
                 {cartItems.map(item => (
-                    <CartItem key={item._id} {...item} />
+                    <CartItem key={item.id} {...item} />
                 ))}
 
                 {cartItems.length === 0 ? <h3>No items added to cart</h3> :  ''}

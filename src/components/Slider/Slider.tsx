@@ -35,8 +35,8 @@ const Slider = ({ products }: any) => {
       >
 
         {products.slice(10, 20).map((product: StoreProduct) => (
-          <SwiperSlide key={product._id}>
-            <img src={product.image.url} alt="" />
+          <SwiperSlide key={product.id}>
+            <img src={product.image} alt="" />
           </SwiperSlide>
         ))}
 

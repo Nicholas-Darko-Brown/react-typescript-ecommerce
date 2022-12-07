@@ -79,7 +79,7 @@ const Store = () => {
         {
           data.map((item: StoreProduct) => (
             // onClick={() => navigate(`product/details/${item._id}`)}
-            <Col key={item._id}>
+            <Col key={item.id}>
               <StoreItem {...item} />
             </Col>
           ))
